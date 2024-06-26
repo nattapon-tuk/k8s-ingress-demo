@@ -1,0 +1,38 @@
+#Remark: require to run command below, in order to allow host machnie to access ingress service inside minikube server
+#   > minikube tunnel
+#
+# For setting Nginx Ingress for Argo CD server
+#   > Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/#kubernetesingress-nginx
+#   > ToFix issue about Too many Redirects,  https://github.com/argoproj/argo-cd/issues/2953#issuecomment-932190859
+#   > + https://stackoverflow.com/questions/76624577/argocd-ingress-kubernetes-too-many-redirects-even-with-insecure-nginx
+#
+
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+  # annotations:
+  #   kubernetes.io/ingress.class: "nginx"
+  name: ingress-demo-argocd
+  namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+  # rule for Argo CD portal              
+  - host: argo-cd.example.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix 
+        backend:
+          service:
+            name: argocd-server 
+            port:
+              name: https 
+  tls:
+  - hosts:
+    - argo-cd.example.local
+    secretName: argocd-secret
