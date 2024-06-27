@@ -1,0 +1,21 @@
+#Remark: require to run command below, in order to allow host machnie to access ingress service inside minikube server
+#   > minikube tunnel
+#
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+  name: ingress-k8s-dashboard
+  namespace: kubernetes-dashboard
+spec:
+  rules:
+  - host: k8s-dashboard.example.local
+    http:
+      paths:
+      - pathType: ImplementationSpecific 
+        path: "/"
+        backend:
+          service:
+            name: kubernetes-dashboard
+            port:
+              number: 80
+     
