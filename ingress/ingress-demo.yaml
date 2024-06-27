@@ -22,4 +22,8 @@ spec:
           service:
             name: kubernetes 
             port:
-              number: 443            
+              number: 443
+  tls:
+  - hosts:
+    - k8s-api.example.local
+    secretName: temptest-tls
