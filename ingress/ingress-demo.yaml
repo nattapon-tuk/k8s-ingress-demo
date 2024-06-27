@@ -56,10 +56,10 @@ spec:
   - host: k8s-api.example.local
     http:
       paths:
-      - pathType: ImplementationSpecific 
+      - pathType: Prefix 
         path: /
         backend:
           service:
             name: kubernetes 
             port:
-              number: 80            
+              name: https            
