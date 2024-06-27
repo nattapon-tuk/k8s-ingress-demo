@@ -38,3 +38,5 @@ Try setting up blue green deployment
 To try setting up ingress rule for Argo CD server for accessing publicly
 - kubectl -n argocd expose deployment argocd-server --type=NodePort
 - kubectl create service nodeport argocd-server-pub --tcp=80:80 -n argocd --dry-run=client -o yaml > argocd-service.yaml
+
+- kubectl create secret tls temptest-tls --key ${KEY_FILE} --cert ${CERT_FILE}
