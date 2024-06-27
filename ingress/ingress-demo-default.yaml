@@ -1,0 +1,54 @@
+#Remark: require to run command below, in order to allow host machnie to access ingress service inside minikube server
+#   > minikube tunnel
+#
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+  name: ingress-default
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  #- host: blue.example.local
+  - host: stable.example.local
+    http:
+      paths:
+      - pathType: ImplementationSpecific 
+        path: "/"
+        backend:
+          service:
+            name: green-web
+            port:
+              number: 80
+  #- host: green.example.local
+  - host: test.example.local
+    http:
+      paths:
+      - pathType: ImplementationSpecific 
+        path: /
+        backend:
+          service:
+            name: blue-web
+            port:
+              number: 80
+  - host: blue.example.local
+    http:
+      paths:
+      - pathType: ImplementationSpecific 
+        path: "/"
+        backend:
+          service:
+            name: blue-web
+            port:
+              number: 80
+  - host: green.example.local
+    http:
+      paths:
+      - pathType: ImplementationSpecific 
+        path: /
+        backend:
+          service:
+            name: green-web
+            port:
+              number: 80
