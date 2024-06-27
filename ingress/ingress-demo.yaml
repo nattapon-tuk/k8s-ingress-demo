@@ -53,13 +53,13 @@ spec:
             port:
               number: 80
   # rule for Argo CD portal              
-  # - host: argo-cd.example.local
-  #   http:
-  #     paths:
-  #     - pathType: ImplementationSpecific 
-  #       path: /
-  #       backend:
-  #         service:
-  #           name: argocd-server-pub 
-  #           port:
-  #             number: 80            
+  - host: k8s-api.example.local
+    http:
+      paths:
+      - pathType: ImplementationSpecific 
+        path: /
+        backend:
+          service:
+            name: kubernetes 
+            port:
+              number: 43            
