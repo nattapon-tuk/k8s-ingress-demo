@@ -12,10 +12,6 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 spec:
-  tls:
-  - hosts:
-    - k8s-api.example.local
-    secretName: ingress-nginx-admission
   rules:
   #- host: blue.example.local
   - host: stable.example.local
