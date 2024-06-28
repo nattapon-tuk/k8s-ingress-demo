@@ -40,3 +40,7 @@ To try setting up ingress rule for Argo CD server for accessing publicly
 - kubectl create service nodeport argocd-server-pub --tcp=80:80 -n argocd --dry-run=client -o yaml > argocd-service.yaml
 
 - kubectl create secret tls temptest-tls --key ${KEY_FILE} --cert ${CERT_FILE}
+
+Argo CD Application Declarative Setup, Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+- kubectl apply -f temptest-ingress-argo-application.yaml
+- kubectl get application -A

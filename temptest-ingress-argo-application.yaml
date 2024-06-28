@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+metadata:
+  name: temptest-ingress
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/nattapon-tuk/k8s-ingress-demo.git
+    targetRevision: HEAD
+    path: ingress
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions: # Sync options which modifies sync behavior  
+    - CreateNamespace=true
+      
