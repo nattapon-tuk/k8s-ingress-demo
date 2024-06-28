@@ -9,6 +9,9 @@ spec:
     repoURL: https://github.com/nattapon-tuk/k8s-ingress-demo.git
     targetRevision: HEAD
     path: ingress
+    directory:
+      recurse: true
+      include: '*.yaml'
   destination:
     server: https://kubernetes.default.svc
     namespace: default
