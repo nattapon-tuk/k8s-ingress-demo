@@ -52,3 +52,13 @@ spec:
             name: green-web
             port:
               number: 80
+  - host: flaskdemo.example.local
+    http:
+      paths:
+      - pathType: Prefix 
+        path: /
+        backend:
+          service:
+            name: flaskdemo-svc
+            port:
+              number: 80              
