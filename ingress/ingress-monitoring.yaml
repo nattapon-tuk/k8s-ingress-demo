@@ -34,4 +34,13 @@ spec:
             name: prometheustemptest-prometheus
             port:
               number: 80
-
+  - host: prometheus-alertmanager.example.local
+    http:
+      paths:
+      - pathType: Prefix 
+        path: /
+        backend:
+          service:
+            name: prometheustemptest-alertmanager
+            port:
+              number: 80
