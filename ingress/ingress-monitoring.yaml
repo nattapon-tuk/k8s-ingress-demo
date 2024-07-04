@@ -33,5 +33,5 @@ spec:
           service:
             name: prometheustemptest-prometheus
             port:
-              number: 9090
+              number: 443
 
