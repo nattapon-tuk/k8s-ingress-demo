@@ -24,7 +24,7 @@ spec:
             name: grafanatemptest
             port:
               number: 80
-  - host: promethus.example.local
+  - host: prometheus.example.local
     http:
       paths:
       - pathType: Prefix 
