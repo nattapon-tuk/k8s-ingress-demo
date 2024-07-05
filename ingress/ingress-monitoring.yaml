@@ -20,8 +20,7 @@ spec:
         path: /
         backend:
           service:
-            # name: prometheus-grafana 
-            name: grafanatemptest
+            name: prometheus-grafana 
             port:
               number: 80
   - host: prometheus.example.local
