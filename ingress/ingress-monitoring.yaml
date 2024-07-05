@@ -31,7 +31,8 @@ spec:
         path: /
         backend:
           service:
-            name: prometheustemptest-prometheus
+            # name: prometheustemptest-prometheus
+            name: prometheus-ui-svc
             port:
               number: 80
   - host: prometheus-alertmanager.example.local
@@ -41,6 +42,7 @@ spec:
         path: /
         backend:
           service:
-            name: prometheustemptest-alertmanager
+            # name: prometheustemptest-alertmanager
+            name: alertmanager-ui-svc
             port:
               number: 80
